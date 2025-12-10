@@ -1,0 +1,17 @@
+package src.main.java.example.com.Typing_Speed_Test.model;
+
+public class TestResult {
+       private int wpm;
+    private double accuracy;
+    private String date;
+
+    public TestResult(int wpm, double accuracy, String date) {
+        this.wpm = wpm;
+        this.accuracy = accuracy;
+        this.date = date;
+    }
+
+    public int getWpm() { return wpm; }
+    public double getAccuracy() { return accuracy; }
+    public String getDate() { return date; }
+}
