@@ -1,4 +1,4 @@
-package src.main.java.example.com.Typing_Speed_Test;
+package src.main.java.example.com.typing_speed_test;
 
 import java.util.Scanner;
 
