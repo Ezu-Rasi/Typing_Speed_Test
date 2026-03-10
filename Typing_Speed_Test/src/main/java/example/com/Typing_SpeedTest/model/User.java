@@ -1,4 +1,4 @@
-package src.main.java.example.com.Typing_SpeedTest.model;
+package example.com.Typing_SpeedTest.model;
 
 public class User {
    private String name;

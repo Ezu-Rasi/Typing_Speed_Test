@@ -1,17 +1,28 @@
-package src.main.java.example.com.Typing_SpeedTest.model;
+package example.com.Typing_SpeedTest.model;
 
 public class TestResult {
-    private int wpm;
-    private double accuracy;
-    private String date;
 
-    public TestResult(int wpm, double accuracy, String date) {
+    private String difficulty;
+    private double timeTaken;
+    private double wpm;
+    private double accuracy;
+
+    public TestResult(String difficulty, double timeTaken, double wpm, double accuracy) {
+        this.difficulty = difficulty;
+        this.timeTaken = timeTaken;
         this.wpm = wpm;
         this.accuracy = accuracy;
-        this.date = date;
     }
 
-    public int getWpm() {
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public double getTimeTaken() {
+        return timeTaken;
+    }
+
+    public double getWpm() {
         return wpm;
     }
 
@@ -19,14 +30,11 @@ public class TestResult {
         return accuracy;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void display() {
-        System.out.println("=== Test Result ===");
-        System.out.println("WPM: " + wpm);
-        System.out.println("Accuracy: " + accuracy + "%");
-        System.out.println("Date: " + date);
+    @Override
+    public String toString() {
+        return "Difficulty: " + difficulty +
+                " | Time: " + String.format("%.2f", timeTaken) +
+                " sec | WPM: " + String.format("%.2f", wpm) +
+                " | Accuracy: " + String.format("%.2f", accuracy) + "%";
     }
 }
