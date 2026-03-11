@@ -67,32 +67,66 @@ public class MenuController {
 
     private void startTypingTest() {
 
-        String text = "Java is a powerful programming language";
-        System.out.println("\nDifficulty: " + difficulty);
-        System.out.println("Type this sentence:");
-        System.out.println(text);
-        System.out.println("\nPress ENTER to start...");
-        input.nextLine();
+        boolean testRunning = true;
 
-        long start = System.currentTimeMillis();
-        String typed = input.nextLine();
-        long end = System.currentTimeMillis();
+        while (testRunning) {
 
-        double timeSeconds = (end - start) / 1000.0;
-        int words = text.split(" ").length;
-        double wpm = (words / timeSeconds) * 60;
+            String text = "Java is a powerful programming language";
 
-        int correctChars = calculateCorrectChars(text, typed);
-        double accuracy = (double) correctChars / text.length() * 100;
+            System.out.println("\nDifficulty: " + difficulty);
+            System.out.println("Type this sentence:");
+            System.out.println(text);
+            System.out.println("\nPress ENTER to start...");
+            input.nextLine();
 
-        System.out.printf("Time: %.2f sec\n", timeSeconds);
-        System.out.printf("WPM: %.2f\n", wpm);
-        System.out.printf("Accuracy: %.2f%%\n", accuracy);
+            long start = System.currentTimeMillis();
+            String typed = input.nextLine();
+            long end = System.currentTimeMillis();
 
-        TestResult result = new TestResult(difficulty, timeSeconds, wpm, accuracy);
-        resultDAO.saveResult(result);
+            double timeSeconds = (end - start) / 1000.0;
+            int words = text.split(" ").length;
+            double wpm = (words / timeSeconds) * 60;
 
-        System.out.println("Result saved!");
+            int correctChars = calculateCorrectChars(text, typed);
+            double accuracy = (double) correctChars / text.length() * 100;
+
+            System.out.printf("Time: %.2f sec\n", timeSeconds);
+            System.out.printf("WPM: %.2f\n", wpm);
+            System.out.printf("Accuracy: %.2f%%\n", accuracy);
+
+            TestResult result = new TestResult(difficulty, timeSeconds, wpm, accuracy);
+            resultDAO.saveResult(result);
+
+            System.out.println("Result saved!");
+
+            System.out.println("\nWhat would you like to do next?");
+            System.out.println("1. Restart Test");
+            System.out.println("2. Change Difficulty");
+            System.out.println("3. Back to Main Menu");
+            System.out.print("Enter choice: ");
+
+            int nextChoice = input.nextInt();
+            input.nextLine();
+
+            switch (nextChoice) {
+
+                case 1:
+                    System.out.println("Restarting test...");
+                    break;
+
+                case 2:
+                    changeDifficulty();
+                    break;
+
+                case 3:
+                    testRunning = false;
+                    break;
+
+                default:
+                    System.out.println("Invalid choice. Returning to menu.");
+                    testRunning = false;
+            }
+        }
     }
 
     private int calculateCorrectChars(String original, String typed) {
