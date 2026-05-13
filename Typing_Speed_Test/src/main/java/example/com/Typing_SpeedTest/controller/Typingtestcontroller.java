@@ -1,4 +1,5 @@
 package example.com.Typing_SpeedTest.controller;
-public class Typingtestcontroller {
+
+public class TypingTestController {
     
 }
