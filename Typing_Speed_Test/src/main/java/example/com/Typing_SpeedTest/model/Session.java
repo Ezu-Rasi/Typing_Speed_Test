@@ -1,8 +1,8 @@
 package example.com.Typing_SpeedTest.model;
 
 public class Session {
-     private long startTime;
-    private long endTime;
+    private long startTime;
+    private long endTime = -1;
 
     public Session(long startTime) {
         this.startTime = startTime;
@@ -13,6 +13,9 @@ public class Session {
     }
 
     public long getDuration() {
+        if (endTime == -1) {
+            throw new IllegalStateException("Session has not ended. Call endSession() first.");
+        }
         return endTime - startTime;
     }
 }

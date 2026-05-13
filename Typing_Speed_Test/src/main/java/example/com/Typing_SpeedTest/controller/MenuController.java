@@ -85,10 +85,10 @@ public class MenuController {
 
             double timeSeconds = (end - start) / 1000.0;
             int words = text.split(" ").length;
-            double wpm = (words / timeSeconds) * 60;
+            double wpm = (timeSeconds > 0) ? (words / timeSeconds) * 60 : 0;
 
             int correctChars = calculateCorrectChars(text, typed);
-            double accuracy = (double) correctChars / text.length() * 100;
+            double accuracy = (text.length() > 0) ? (double) correctChars / text.length() * 100 : 0;
 
             System.out.printf("Time: %.2f sec\n", timeSeconds);
             System.out.printf("WPM: %.2f\n", wpm);
