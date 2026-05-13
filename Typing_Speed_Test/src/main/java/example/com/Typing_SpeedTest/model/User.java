@@ -1,7 +1,7 @@
 package example.com.Typing_SpeedTest.model;
 
 public class User {
-   private String name;
+    private String name;
     private int age;
 
     public User(String name, int age) {

@@ -1,7 +1,7 @@
 package example.com.Typing_SpeedTest.model;
 
 public class Report {
-     private String userName;
+    private String userName;
     private int wpm;
     private double accuracy;
 
